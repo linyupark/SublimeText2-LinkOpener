@@ -1,8 +1,7 @@
 [
    { "caption": "-" },
-   { "caption": "Search on web", "command": "search_term" },
-   { "caption": "Open URL", "command": "open_url" },
-   { "caption": "Select next URL", "command": "select_next_url" },
-   { "caption": "Select all URLs", "command": "select_all_urls" },
+   { "caption": "Search", "command": "search_term" },
+   { "caption": "Ask", "command": "ask_term" },
+   { "caption": "Translate", "command": "trans_term" },
    { "caption": "-" }
 ]
