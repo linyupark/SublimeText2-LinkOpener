@@ -4,5 +4,9 @@
 	// if true then raises and focused the browser's window upon openning
 	"raise_window": true,
 	// search url
-	"search_url": "https://www.google.cz/search?q=%s"
+	"search_url": "http://www.google.com.tw/search?newwindow=1&site=&source=hp&q=%s&btnG=Google+%E6%90%9C%E7%B4%A2",
+  // ask url
+  "ask_url": "http://stackoverflow.com/search?q=%s",
+  // trans url
+  "trans_url": "http://dict.hjenglish.com/w/%s"
 }
