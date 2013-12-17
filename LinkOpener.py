@@ -42,7 +42,8 @@ findUrl = re.compile(regexFindUrl, re.I)
 findUrlExact = re.compile("^" + regexFindUrl + "$", re.I)
 findJunk = re.compile(junk + "$", re.I)
 
-settings = sublime.load_settings('linkopener.sublime-settings')
+def settings():
+ return sublime.load_settings('linkopener.sublime-settings')
 
 
 def isLink(text):
@@ -100,10 +101,10 @@ class OpenUrlCommand(sublime_plugin.TextCommand):
             link = fixLink(link)
 
             if link is not None and link not in opened:
-                webbrowser.open(link, 1, settings.get('raise_window'))
+                webbrowser.open(link, 1, settings().get('raise_window'))
                 opened.append(link)
 
-            if settings.get('first_link_only'):
+            if settings().get('first_link_only'):
                 break
 
         sublime.status_message(statusInfo(opened))
@@ -188,7 +189,53 @@ class SearchTermCommand(sublime_plugin.TextCommand):
 
 
         for term in terms:
-            link = settings.get('search_url').replace('%s', term)
+            link = settings().get('search_url').replace('%s', term)
+
+            webbrowser.open(link, 1, True)
+
+
+class AskTermCommand(sublime_plugin.TextCommand):
+    def run(self, edit):
+        selection = self.view.sel()
+        select = sublime.Region(0, self.view.size())
+
+        selection = self.view.sel()
+        terms = []
+
+        for select in selection:
+            contents = self.view.substr(select)
+            if contents not in terms:
+              if ST3:
+                terms.append(urllib.parse.quote(contents))
+              else:
+                terms.append(urllib2.quote(contents.encode("utf8")))
+
+
+        for term in terms:
+            link = settings().get('ask_url').replace('%s', term)
+
+            webbrowser.open(link, 1, True)
+
+
+class TransTermCommand(sublime_plugin.TextCommand):
+    def run(self, edit):
+        selection = self.view.sel()
+        select = sublime.Region(0, self.view.size())
+
+        selection = self.view.sel()
+        terms = []
+
+        for select in selection:
+            contents = self.view.substr(select)
+            if contents not in terms:
+              if ST3:
+                terms.append(urllib.parse.quote(contents))
+              else:
+                terms.append(urllib2.quote(contents.encode("utf8")))
+
+
+        for term in terms:
+            link = settings().get('trans_url').replace('%s', term)
 
             webbrowser.open(link, 1, True)
 
