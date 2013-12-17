@@ -20,11 +20,6 @@
                                 "args": {"file": "${packages}/LinkOpener/linkopener.sublime-settings"},
                                 "caption": "Settings – Default"
                             },
-                            {
-                                "command": "open_file",
-                                "args": {"file": "${packages}/User/Preferences.sublime-settings"},
-                                "caption": "Settings – User"
-                            },
                             { "caption": "-" }
                         ]
                     }
