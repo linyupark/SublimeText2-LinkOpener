@@ -168,8 +168,10 @@ else:
 #                 region = sublime.Region(reg.begin(), reg.end())
 #                 selection.add(region)
 
+def getSettings():
+    return sublime.load_settings('linkopener.sublime-settings')
+
 class SearchTermCommand(sublime_plugin.TextCommand):
-    settings = sublime.load_settings('linkopener.sublime-settings')
     def run(self, edit):
         selection = self.view.sel()
         select = sublime.Region(0, self.view.size())
@@ -187,7 +189,7 @@ class SearchTermCommand(sublime_plugin.TextCommand):
 
 
         for term in terms:
-            link = self.settings.get('search_url').replace('%s', term)
+            link = getSettings().get('search_url').replace('%s', term)
 
             webbrowser.open(link, 1, True)
 
@@ -211,7 +213,7 @@ class AskTermCommand(sublime_plugin.TextCommand):
 
 
         for term in terms:
-            link = self.settings.get('ask_url').replace('%s', term)
+            link = getSettings().get('ask_url').replace('%s', term)
 
             webbrowser.open(link, 1, True)
 
@@ -235,7 +237,7 @@ class TransTermCommand(sublime_plugin.TextCommand):
 
 
         for term in terms:
-            link = self.settings.get('trans_url').replace('%s', term)
+            link = getSettings().get('trans_url').replace('%s', term)
 
             webbrowser.open(link, 1, True)
 
