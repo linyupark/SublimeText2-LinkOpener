@@ -8,5 +8,5 @@
   // ask url
   "ask_url": "http://stackoverflow.com/search?q=%s",
   // trans url
-  "trans_url": "http://dict.hjenglish.com/w/%s"
+  "trans_url": "http://translate.google.com.hk/?hl=zh-CN&tab=wT#en/zh-CN/%s"
 }
